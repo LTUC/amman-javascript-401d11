@@ -4,6 +4,7 @@ const express = require('express');
 
 const router = express.Router();
 const {People} = require('../models/index');
+// console.log(People)
 // add routes
 router.get('/people', getPeople);
 router.get('/people/:id', getOnePerson);

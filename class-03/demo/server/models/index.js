@@ -1,13 +1,17 @@
 'use strict';
 
-const POSTGRES_URI = "postgres://localhost:5432/testing";
+// connects to our database depending on the URI set as an environment variable, 
+const POSTGRES_URI =  process.env.DATABASE_URI || "postgres://localhost:5432/rawanalnujoom";
 const { Sequelize, DataTypes } = require('sequelize');
-const people = require('./people.model');
 
-let sequelize = new Sequelize(POSTGRES_URI, {});
+// We can add Configuration based on the environment ... Where is our code running in "development" and "test" vs "deployed"?
+let sequelizeOptions = {};
+let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
 
-// lets define our Schema
+// our schema definitions
+const people = require('./people.model.js');
+
 module.exports = {
-    People: people(sequelize, DataTypes),
-    db: sequelize
-}
+  db: sequelize,
+  People: people(sequelize, DataTypes),
+};
