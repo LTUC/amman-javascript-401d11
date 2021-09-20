@@ -1,0 +1,9 @@
+.dark {
+    background: rgb(8, 39, 39);
+    color: honeydew;
+}
+
+.light {
+    background: honeydew;
+    color:rgb(8, 39, 39)
+}
